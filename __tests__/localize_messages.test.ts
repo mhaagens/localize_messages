@@ -1,13 +1,26 @@
 describe("Localize messages", () => {
   it("returns a message in norwegian", () => {
-    expect(localizeMessage(norwegianBundle, { message: "GENERAL_ERROR" })).toBe(
-      "Noe gikk galt"
-    );
+    expect(
+      localizeMessage(norwegianBundle, { message: MESSAGE["GENERAL_ERROR"] })
+    ).toBe(norwegianBundle[MESSAGE["GENERAL_ERROR"]]);
   });
 });
 
-const norwegianBundle = {};
+enum MESSAGE {
+  GENERAL_ERROR = "GENERAL_ERROR",
+}
 
-function localizeMessage(norwegianBundle: any, arg1: { message: string }): any {
-  return "Noe gikk galt";
+type Bundle = {
+  [key: string]: string;
+};
+
+const norwegianBundle: Bundle = {
+  GENERAL_ERROR: "Noe gikk galt",
+};
+
+function localizeMessage(
+  norwegianBundle: Bundle,
+  requestError: { message: MESSAGE }
+): string {
+  return norwegianBundle[requestError.message];
 }
