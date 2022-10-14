@@ -25,7 +25,9 @@ const norwegianBundle: Bundle = {
   GENERAL_ERROR: "Noe gikk galt",
 };
 
-const englishBundle: Bundle = {};
+const englishBundle: Bundle = {
+  NETWORK_ERROR: "Something went wrong",
+};
 
 function localizeMessage(
   norwegianBundle: Bundle,
